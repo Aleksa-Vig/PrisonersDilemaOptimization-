@@ -1,3 +1,5 @@
+import os
+
 import axelrod as axl
 import csv
 from axelrod import *
@@ -46,4 +48,4 @@ print(interaction.ranked_names)
 plot = axl.Plot(interaction)
 p = plot.boxplot()
 p.show()
-plot.save_all_plots(f"C:\\Users\\xhorx\\PycharmProjects\\project1COMP3710\\plots\\graph", "graphs", "pdf")
+plot.save_all_plots(f"{os.getcwd()}\\plots\\graph", "graphs", "pdf")
