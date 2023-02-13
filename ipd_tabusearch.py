@@ -155,6 +155,7 @@ class TabuSearch:
                         self.best = deepcopy(self.current)
                     break
 
+            ## Maximum score has been reached and return the best sequence and best score
             if self.max_score is not None and self._score(self.best) > self.max_score:
                 print("TERMINATING - REACHED MAXIMUM SCORE")
                 return self.best, self._score(self.best)

@@ -5,14 +5,17 @@ C, D = Action.C, Action.D
 genetic_algo = axl.MockPlayer([C, D, D, C, D, C, D, D, D, D, D, D, D, D, D, D, C, D, C, D, D, D, C, C, C, D, C, D, D, D,
                                D, D, D, D, C, D, C, D, C, D, C, D, D, D, D, C, D, D, D, C, D, D, D, C, C, D, D, D, D, D,
                                D, D, C, D])
+genetic_algo = "GeneticAlgo3/4/100/300"
 
 tabu_search = axl.MockPlayer([D, C, C, D, D, C, C, C, C, C, C, C, D, D, D, C, C, C, C, D, C, C, C, C, D, C, C, D, C, C,
                               C, C, C, C, C, D, D, C, C, C, C, D, D, C, C, D, D, C, C, C, C, D, C, D, C, C, D, C, D, C,
                               C, C, D, C])
+tabu_search.name = "Tabu Search Cooperative"
 
 sim_anneal = axl.MockPlayer([D, C, D, C, D, D, C, D, C, D, C, C, D, C, C, C, C, D, D, D, C, D, C, D, C, C, C, C, C, D,
                              D, C, D, C, C, C, D, C, D, D, C, C, D, D, D, D, C, D, D, C, D, D, D, C, C, D, D, D, D, D,
                              D, D, D, D])
+sim_anneal.name = "Simulated Annealing"
 
 players = [axl.TitForTat(), axl.Defector(), axl.SpitefulTitForTat(), axl.Cooperator(),
            axl.Cooperator(), axl.Prober(), axl.Grudger(), genetic_algo, tabu_search, sim_anneal]
@@ -31,4 +34,4 @@ print(interaction.ranked_names)
 plot = axl.Plot(interaction)
 p = plot.boxplot()
 p.show()
-plot.save_all_plots(f"C:\\Users\\xhorx\\PycharmProjects\\project1COMP3710\\plots\\graph", "graphs", "pdf")
+plot.save_all_plots(f"C:\\Users\\AleksaVig\\Documents\\School\\Y4S1\\3710 - AIIntro\\PrisonersDilemaOptimization-\\plots\\graph", "graphs", "pdf")
