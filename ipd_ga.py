@@ -116,6 +116,16 @@ class GeneticAlgorithm:
                     fitness += 1
                 else:
                     fitness += 5
+            if opponent[-3:] == ['C', 'C', 'C']:
+                if member[i] == 'D':
+                    fitness += 8
+                else:
+                    fitness += 3
+            if opponent[-3:] == ['D', 'D', 'D']:
+                if member[i] == 'D':
+                    fitness += 4
+                else:
+                    fitness += 0
         return fitness
 
     def _populate_fitness(self):
@@ -225,5 +235,5 @@ class GeneticAlgorithm:
 
 
 if __name__ == '__main__':
-    ga = GeneticAlgorithm(0.3, 0.4, 100, 300)
+    ga = GeneticAlgorithm(0.7, 0.001, 100)
     ga.run()
