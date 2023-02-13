@@ -90,6 +90,16 @@ class TabuSearch:
                     score += 6
             else:
                 score += 5
+            if opponent_state[-3:] == ['C', 'C', 'C']:
+                if state[i] == 'D':
+                    score += 0
+                else:
+                    score += 12
+            if opponent_state[-3:] == ['D', 'D', 'D']:
+                if state[i] == 'D':
+                    score += 4
+                else:
+                    score -= 6
         return score
 
     @abstractmethod

@@ -120,7 +120,7 @@ class SimulatedAnnealing:
                 p2 = state[j]
 
                 if p1 == 'C' and p2 == 'C':
-                    energy += 3
+                    energy += 6
                 elif p1 == 'C' and p2 == 'D':
                     energy += 0
                 elif p1 == 'D' and p2 == 'C':

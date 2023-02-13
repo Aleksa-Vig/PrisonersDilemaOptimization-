@@ -89,7 +89,8 @@ class GeneticAlgorithm:
         :return: list of members of population
         """
         population = []
-        for i in range(1000):
+        # population size of 1500 for this run
+        for i in range(1500):
             individual = []
             for j in range(64):
                 individual.append(choice('CD'))
@@ -121,11 +122,22 @@ class GeneticAlgorithm:
                     fitness += 8
                 else:
                     fitness += 3
-            if opponent[-3:] == ['D', 'D', 'D']:
+            elif opponent[-3:] == ['D', 'D', 'D']:
                 if member[i] == 'D':
                     fitness += 4
                 else:
                     fitness += 0
+            elif opponent[-3:] == ['D', 'C', 'C']:
+                if member[i] == 'D':
+                    fitness += 3
+                else:
+                    fitness += 5
+            elif opponent[-3:] == ['C', 'D', 'D']:
+                if member[i] == 'C':
+                    fitness += 1
+                else:
+                    fitness += 4
+
         return fitness
 
     def _populate_fitness(self):
@@ -235,5 +247,5 @@ class GeneticAlgorithm:
 
 
 if __name__ == '__main__':
-    ga = GeneticAlgorithm(0.7, 0.001, 100)
+    ga = GeneticAlgorithm(0.9, 0.9, 100)
     ga.run()

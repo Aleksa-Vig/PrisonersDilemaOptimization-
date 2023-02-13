@@ -40,3 +40,18 @@ def tit_for_two_tats_bot(member):
         else:
             opponent_strategy.append('C')
     return opponent_strategy
+
+
+def defect_bot():
+    strategy = []
+    for i in range(64):
+        strategy.append('D')
+    return strategy
+
+
+def coop_bot():
+    strategy = []
+    for i in range(64):
+        strategy.append('C')
+
+

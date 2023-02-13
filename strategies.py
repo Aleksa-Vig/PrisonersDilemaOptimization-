@@ -7,29 +7,29 @@ genetic_algo = axl.MockPlayer([C, D, D, C, D, C, D, D, D, D, D, D, D, D, D, D, C
                                D, D, C, D])
 genetic_algo.name = "GeneticAlgo0.3/0.4"
 
-genetic_algo2 = axl.MockPlayer([D, D, D, D, D, D, C, D, D, C, C, D, D, D, D, D, D, D, D, C, C, C, D, D, C, C, D, D, C,
-                                D, D, D, D, D, D, D, D, D, D, D, C, D, D, C, C, D, D, C, D, D, D, C, C, D, C, D, D, C,
-                                C, D, D, D, D, C])
+genetic_algo2 = axl.MockPlayer([D, D, D, C, D, C, C, D, D, D, C, D, D, D, C, D, D, C, C, D, D, C, D, D, D, D, D, C, D,
+                                D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, D, C, C, D, C, D, C, C, C, D, D, D, D,
+                                C, C, D, D, C, D])
 genetic_algo2.name = "GeneticAlgo0.7/0.001"
 
-tabu_search = axl.MockPlayer([D, C, C, D, D, C, C, C, C, C, C, C, D, D, D, C, C, C, C, D, C, C, C, C, D, C, C, D, C, C,
-                              C, C, C, C, C, D, D, C, C, C, C, D, D, C, C, D, D, C, C, C, C, D, C, D, C, C, D, C, D, C,
-                              C, C, D, C])
-tabu_search.name = "Tabu Search Cooperative"
+tabu_search_coop = axl.MockPlayer([C, C, C, C, C, C, C, C, D, C, C, C, D, D, C, D, C, D, D, C, C, D, C, C, D, C, D, C,
+                                   C, D, C, C, D, C, C, D, C, D, D, D, C, C, D, C, C, C, C, C, D, C, D, C, C, C, C, D,
+                                   C, D, C, C, D, D, D, C])
+tabu_search_coop.name = "Tabu Search Cooperative"
 
-tabu_search_defect = axl.MockPlayer([D, D, D, D, C, C, C, D, C, C, D, C, C, C, D, D, D, D, C, C, D, D, D, D, C, C, D, D,
-                                     D, D, C, D, C, C, C, D, D, D, D, D, D, D, D, D, D, C, C, C, D, C, C, D, D, D, D, D,
-                                     D, D, C, C, D, C, D, D])
+tabu_search_defect = axl.MockPlayer([D, D, D, D, D, C, D, D, C, D, C, D, D, C, D, D, D, C, D, D, C, D, C, C, D, D, C, C,
+                                     C, C, D, D, C, D, D, C, D, D, D, D, C, C, D, D, D, D, D, D, D, C, D, D, D, D, D, D,
+                                     D, C, C, D, D, D, D, C])
 
 tabu_search_defect.name = "Tabu Search Defect"
 
-sim_anneal = axl.MockPlayer([D, C, D, C, D, D, C, D, C, D, C, C, D, C, C, C, C, D, D, D, C, D, C, D, C, C, C, C, C, D,
-                             D, C, D, C, C, C, D, C, D, D, C, C, D, D, D, D, C, D, D, C, D, D, D, C, C, D, D, D, D, D,
+sim_anneal = axl.MockPlayer([C, D, C, C, C, D, C, C, D, D, D, D, D, C, C, D, C, D, D, C, C, D, D, D, D, D, C, C, C, C,
+                             C, D, D, D, D, D, D, D, C, D, C, D, C, D, D, D, D, C, D, C, D, C, C, C, D, D, D, D, D, C,
                              D, D, D, D])
 sim_anneal.name = "Simulated Annealing"
 
 players = [axl.TitForTat(), axl.Defector(), axl.SpitefulTitForTat(), axl.Cooperator(),
-           genetic_algo, tabu_search, sim_anneal, genetic_algo2, axl.FirmButFair(), axl.Darwin(),
+           genetic_algo, tabu_search_coop, sim_anneal, genetic_algo2, axl.FirmButFair(), axl.Darwin(),
            tabu_search_defect]
 
 game = axl.Tournament(players)
