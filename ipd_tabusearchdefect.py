@@ -81,6 +81,7 @@ class TabuSearch:
         """
         score = 0
         opponent_state = random_bot()
+        # score favours more uncooperative strategy
         for i in range(len(state)):
             if state[i] == 'D':
                 if opponent_state[i] == 'D':
@@ -90,6 +91,7 @@ class TabuSearch:
                     score += 2
             else:
                 score += 0
+            # memory depth of 3
             if opponent_state[-3:] == ['C', 'C', 'C']:
                 if state[i] == 'D':
                     score += 8

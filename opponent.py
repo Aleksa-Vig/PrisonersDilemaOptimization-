@@ -1,5 +1,7 @@
 from random import *
 
+# various strategies to compare and contrast in the genetic algorithm, also a random bot to initialize a random state
+
 
 def tit_for_tat_bot(member):
     opponent_strategy = []

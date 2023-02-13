@@ -81,6 +81,7 @@ class TabuSearch:
         """
         score = 0
         opponent_state = random_bot()
+        # reward more cooperative strategy
         for i in range(len(state)):
             if state[i] == 'D':
                 if opponent_state[i] == 'D':

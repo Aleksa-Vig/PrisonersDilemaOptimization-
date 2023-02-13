@@ -89,10 +89,10 @@ class GeneticAlgorithm:
         :return: list of members of population
         """
         population = []
-        # population size of 1500 for this run
-        for i in range(1500):
+        # population size of 1000 for this run
+        for i in range(1000):
             individual = []
-            for j in range(64):
+            for j in range(64): # each list is encoded with 64 moves
                 individual.append(choice('CD'))
             population.append(individual)
         return population
@@ -105,6 +105,7 @@ class GeneticAlgorithm:
         :return: fitness of member
         """
         fitness = 0
+        # strategies play each other and then winner plays the current member of the population
         opponent = tit_for_tat_bot(tit_for_two_tats_bot(suspicious_tit_for_tat_bot(random_bot())))
         for i in range(len(member)):
             if member[i] == 'C':
@@ -117,27 +118,31 @@ class GeneticAlgorithm:
                     fitness += 1
                 else:
                     fitness += 5
+            # memory depth of 3
             if opponent[-3:] == ['C', 'C', 'C']:
                 if member[i] == 'D':
                     fitness += 8
+                    # is focused on improving own score thus defect is highly rewarded if there is history of coop
                 else:
                     fitness += 3
             elif opponent[-3:] == ['D', 'D', 'D']:
                 if member[i] == 'D':
                     fitness += 4
                 else:
+                    # if history of defect keep defecting do not cooperate
                     fitness += 0
             elif opponent[-3:] == ['D', 'C', 'C']:
+                # if last two moves cooperate and third defect still defect
                 if member[i] == 'D':
-                    fitness += 3
+                    fitness += 6
                 else:
-                    fitness += 5
+                    fitness += 3
             elif opponent[-3:] == ['C', 'D', 'D']:
                 if member[i] == 'C':
                     fitness += 1
                 else:
                     fitness += 4
-
+                # if last two moves defect keep defecting even if previous 3 moves was cooperate
         return fitness
 
     def _populate_fitness(self):
@@ -167,6 +172,7 @@ class GeneticAlgorithm:
         :param n: number of members to select
         :return: n members
         """
+        # shuffles the population and sums the total fitness of population
         shuffle(self.population)
         total_fitness = sum(self.fitness)
         if total_fitness != 0:

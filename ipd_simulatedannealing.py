@@ -114,6 +114,7 @@ class SimulatedAnnealing:
         :return: energy of state
         """
         energy = 0
+        # energy based off payoff matrix
         for i in range(len(state)):
             for j in range(i + 1, len(state)):
                 p1 = state[i]
@@ -126,7 +127,7 @@ class SimulatedAnnealing:
                 elif p1 == 'D' and p2 == 'C':
                     energy += 5
                 else:
-                    energy += 1
+                    energy += 2
         return energy
 
     def _accept_neighbor(self, neighbor):
