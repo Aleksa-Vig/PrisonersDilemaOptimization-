@@ -9,10 +9,10 @@ genetic_algo = axl.MockPlayer([C, C, C, D, D, D, C, D, D, D, D, D, D, D, D, D, C
                                C, D, D, D])
 genetic_algo.name = "GeneticAlgo0.1/0.99"
 
-genetic_algo2 = axl.MockPlayer([C, D, D, D, D, D, C, D, C, D, D, D, D, D, D, D, D, C, C, C, D, D, D, C, D, D, C, D, C,
-                                D, D, D, C, C, D, C, D, C, D, D, D, D, C, D, D, C, D, D, D, D, D, C, D, C, D, D, D, D,
-                                C, D, D, D, C, C])
-genetic_algo2.name = "GeneticAlgo0.6/0.1"
+genetic_algo2 = axl.MockPlayer([D, D, D, D, D, D, C, C, D, C, D, C, D, D, C, C, D, C, D, C, D, D, D, D, D, D, C, D, D,
+                                C, D, D, D, D, D, C, C, C, C, D, D, D, D, D, D, D, D, D, D, D, D, D, C, D, D, D, C, D,
+                                D, D, D, D, D, C])
+genetic_algo2.name = "GeneticAlgo0.6/0.05"
 
 tabu_search_coop = axl.MockPlayer([D, C, D, C, C, C, C, C, D, D, C, C, C, C, C, C, C, D, D, D, D, D, C, D, D, C, D, C,
                                    C, C, C, C, C, D, D, D, C, D, C, C, D, D, D, C, C, D, C, C, C, D, C, D, C, C, C, D,

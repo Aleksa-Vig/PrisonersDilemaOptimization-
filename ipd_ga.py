@@ -278,5 +278,5 @@ class GeneticAlgorithm:
 
 
 if __name__ == '__main__':
-    ga = GeneticAlgorithm(0.6, 0.99, 100)
+    ga = GeneticAlgorithm(0.6, 0.05, 100)
     ga.run()
