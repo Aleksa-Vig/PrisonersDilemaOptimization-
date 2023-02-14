@@ -89,7 +89,7 @@ class GeneticAlgorithm:
         :return: list of members of population
         """
         population = []
-        # population size of 200 for this run
+        # population size of 300 for this run
         for i in range(300):
             individual = []
             for j in range(64):
