@@ -89,10 +89,11 @@ class GeneticAlgorithm:
         :return: list of members of population
         """
         population = []
-        # population size of 1000 for this run
-        for i in range(1000):
+        # population size of 200 for this run
+        for i in range(300):
             individual = []
-            for j in range(64): # each list is encoded with 64 moves
+            for j in range(64):
+                # each list is encoded with 64 moves
                 individual.append(choice('CD'))
             population.append(individual)
         return population
@@ -106,7 +107,8 @@ class GeneticAlgorithm:
         """
         fitness = 0
         # strategies play each other and then winner plays the current member of the population
-        opponent = tit_for_tat_bot(tit_for_two_tats_bot(suspicious_tit_for_tat_bot(random_bot())))
+        opponent = suspicious_tit_for_tat_bot(tit_for_tat_bot(tit_for_two_tats_bot(suspicious_tit_for_tat_bot(
+            random_bot()))))
         for i in range(len(member)):
             if member[i] == 'C':
                 if opponent[i] == 'C':
@@ -119,30 +121,53 @@ class GeneticAlgorithm:
                 else:
                     fitness += 5
             # memory depth of 3
+            # 2^3 is equal to 8 scenarios
             if opponent[-3:] == ['C', 'C', 'C']:
                 if member[i] == 'D':
-                    fitness += 8
-                    # is focused on improving own score thus defect is highly rewarded if there is history of coop
+                    fitness += 5
+                    # is focused on improving his own score thus defect in this scenario
                 else:
                     fitness += 3
             elif opponent[-3:] == ['D', 'D', 'D']:
                 if member[i] == 'D':
-                    fitness += 4
+                    fitness += 2
                 else:
                     # if history of defect keep defecting do not cooperate
                     fitness += 0
             elif opponent[-3:] == ['D', 'C', 'C']:
-                # if last two moves cooperate and third defect still defect
+                # if last two moves cooperate and third defect then encourage defect
                 if member[i] == 'D':
-                    fitness += 6
+                    fitness += 5
                 else:
                     fitness += 3
             elif opponent[-3:] == ['C', 'D', 'D']:
                 if member[i] == 'C':
-                    fitness += 1
+                    fitness += 0
                 else:
-                    fitness += 4
-                # if last two moves defect keep defecting even if previous 3 moves was cooperate
+                    fitness += 2
+                # if last two moves defect keep defecting even if 3rd previous move was 'C'
+            elif opponent[-3:] == ['C', 'C', 'D']:
+                # if last move 'D' but history of 'C' still try to defect
+                if member[i] == 'D':
+                    fitness += 5
+                else:
+                    fitness += 1
+            elif opponent[-3:] == ['C', 'D', 'C']:
+                if member[i] == 'C':
+                    fitness += 0
+                else:
+                    fitness += 1
+            elif opponent[-3:] == ['D', 'C', 'D']:
+                if member[i] == 'D':
+                    fitness += 5
+                else:
+                    fitness += 0
+            elif opponent[-3:] == ['D', 'D', 'C']:
+                # if last move 'C' and history of 'D' then still 'D'
+                if member[i] == 'D':
+                    fitness += 5
+                else:
+                    fitness += 1
         return fitness
 
     def _populate_fitness(self):
@@ -253,5 +278,5 @@ class GeneticAlgorithm:
 
 
 if __name__ == '__main__':
-    ga = GeneticAlgorithm(0.9, 0.9, 100)
+    ga = GeneticAlgorithm(0.6, 0.99, 100)
     ga.run()

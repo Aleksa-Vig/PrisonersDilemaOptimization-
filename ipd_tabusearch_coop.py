@@ -96,11 +96,41 @@ class TabuSearch:
                     score += 0
                 else:
                     score += 12
-            if opponent_state[-3:] == ['D', 'D', 'D']:
+            elif opponent_state[-3:] == ['D', 'D', 'D']:
                 if state[i] == 'D':
                     score += 4
                 else:
                     score -= 6
+            elif opponent_state[-3:] == ['D', 'C', 'C']:
+                if state[i] == 'C':
+                    score += 12
+                else:
+                    score += 5
+            elif opponent_state[-3:] == ['C', 'D', 'D']:
+                if state[i] == 'C':
+                    score += 0
+                else:
+                    score += 2
+            elif opponent_state[-3:] == ['C', 'C', 'D']:
+                if state[i] == 'D':
+                    score += 2
+                else:
+                    score += 6
+            elif opponent_state[-3:] == ['C', 'D', 'C']:
+                if state[i] == 'C':
+                    score += 6
+                else:
+                    score += 2
+            elif opponent_state[-3:] == ['D', 'C', 'D']:
+                if state[i] == 'D':
+                    score += 2
+                else:
+                    score += 0
+            elif opponent_state[-3:] == ['D', 'D', 'C']:
+                if state[i] == 'D':
+                    score += 2
+                else:
+                    score += 6
         return score
 
     @abstractmethod
@@ -166,7 +196,7 @@ class TabuSearch:
                         self.best = deepcopy(self.current)
                     break
 
-            ## Maximum score has been reached and return the best sequence and best score
+            # Maximum score has been reached and return the best sequence and best score
             if self.max_score is not None and self._score(self.best) > self.max_score:
                 print("TERMINATING - REACHED MAXIMUM SCORE")
                 return self.best, self._score(self.best)

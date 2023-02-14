@@ -94,14 +94,44 @@ class TabuSearch:
             # memory depth of 3
             if opponent_state[-3:] == ['C', 'C', 'C']:
                 if state[i] == 'D':
-                    score += 8
+                    score += 10
                 else:
                     score -= 3
-            if opponent_state[-3:] == ['D', 'D', 'D']:
+            elif opponent_state[-3:] == ['D', 'D', 'D']:
                 if state[i] == 'D':
-                    score += 5
+                    score += 20
                 else:
                     score -= 6
+            elif opponent_state[-3:] == ['D', 'C', 'C']:
+                if state[i] == 'C':
+                    score += 6
+                else:
+                    score += 10
+            elif opponent_state[-3:] == ['C', 'D', 'D']:
+                if state[i] == 'C':
+                    score += 0
+                else:
+                    score += 10
+            elif opponent_state[-3:] == ['C', 'C', 'D']:
+                if state[i] == 'D':
+                    score += 10
+                else:
+                    score += 3
+            elif opponent_state[-3:] == ['C', 'D', 'C']:
+                if state[i] == 'C':
+                    score += 3
+                else:
+                    score += 5
+            elif opponent_state[-3:] == ['D', 'C', 'D']:
+                if state[i] == 'D':
+                    score += 10
+                else:
+                    score += 0
+            elif opponent_state[-3:] == ['D', 'D', 'C']:
+                if state[i] == 'D':
+                    score += 10
+                else:
+                    score += 6
         return score
 
     @abstractmethod

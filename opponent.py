@@ -1,11 +1,14 @@
 from random import *
 
-# various strategies to compare and contrast in the genetic algorithm, also a random bot to initialize a random state
+"""
+ various strategies to incorporate into out algorithms and also contains a random bot to randomly generate a state
+ we use this for tabu search and simulated annealing to generate our states
+"""
 
 
 def tit_for_tat_bot(member):
     opponent_strategy = []
-    for i in range(64):
+    for i in range(len(member)):
         if member[-1:] == 'D' and i >= 1:
             opponent_strategy.append('D')
         else:
@@ -22,7 +25,7 @@ def random_bot():
 
 def suspicious_tit_for_tat_bot(member):
     opponent_strategy = []
-    for i in range(64):
+    for i in range(len(member)):
         if i == 0:
             opponent_strategy.append('D')
         if member[-1:] == 'C' and i >= 1:
@@ -34,7 +37,7 @@ def suspicious_tit_for_tat_bot(member):
 
 def tit_for_two_tats_bot(member):
     opponent_strategy = []
-    for i in range(64):
+    for i in range(len(member)):
         if i == 0 and i == 1:
             opponent_strategy.append('C')
         if member[-2:] == ['D', 'D'] and i >= 2:
@@ -42,6 +45,17 @@ def tit_for_two_tats_bot(member):
         else:
             opponent_strategy.append('C')
     return opponent_strategy
+
+
+def spiteful_tit_for_tat_bot(member):
+    opponent_strategy = []
+    for i in range(len(member)):
+        if i == 0:
+            opponent_strategy.append('D')
+        elif member[-2:] == ['D', 'D'] or member[-1:] == 'D' and i >= 1:
+            opponent_strategy.append('D')
+        else:
+            opponent_strategy.append('C')
 
 
 def defect_bot():
@@ -55,5 +69,4 @@ def coop_bot():
     strategy = []
     for i in range(64):
         strategy.append('C')
-
-
+    return strategy
